@@ -1,0 +1,28 @@
+{
+    "name": "markause/guess-number",
+    "description": "Implementation of the game \"Guess-number\"",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Markause\\GuessNumber\\": "src/"
+        },
+        "files": [
+            "src/Controller.php",
+            "src/View.php"
+        ]
+    },
+    "bin": [
+        "bin/guess-number"
+    ],
+    "authors": [
+        {
+            "name": "KrasulinN",
+            "email": "kras.nik.040603@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.0"
+    }
+}
