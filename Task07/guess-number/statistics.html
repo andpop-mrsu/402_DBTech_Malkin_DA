@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Статистика</h1>
+        <button class="button" id="backButton">Назад</button>
+        <ul id="statisticsList"></ul>
+    </div>
+
+    <script type="module">
+        import { getAllGames } from './db.js';
+
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        async function displayStatistics() {
+            const games = await getAllGames();
+            const statistics = {};
+
+            games.forEach(game => {
+                const playerName = game.playerName;
+                if (!statistics[playerName]) {
+                    statistics[playerName] = { wins: 0, losses: 0 };
+                }
+                if (game.result === 'win') {
+                    statistics[playerName].wins++;
+                } else if (game.result === 'lose') {
+                    statistics[playerName].losses++;
+                }
+            });
+
+            const sortedPlayers = Object.keys(statistics).sort((a, b) => statistics[b].wins - statistics[a].wins);
+
+            const statisticsList = document.getElementById('statisticsList');
+            statisticsList.innerHTML = '';
+
+            sortedPlayers.forEach(playerName => {
+                const { wins, losses } = statistics[playerName];
+                const li = document.createElement('li');
+                li.textContent = `Игрок: ${playerName}, Победы: ${wins}, Поражения: ${losses}`;
+                statisticsList.appendChild(li);
+            });
+        }
+
+        displayStatistics();
+    </script>
+</body>
+</html>

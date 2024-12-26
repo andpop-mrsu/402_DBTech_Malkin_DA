@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Угадай число</h1>
+        <button class="button" id="startGame">Начать новую игру</button>
+        <button class="button" id="viewAllGames">Посмотреть все игры</button>
+        <button class="button" id="viewAllWins">Посмотреть все победы</button>
+        <button class="button" id="viewAllLosses">Посмотреть все поражения</button>
+        <button class="button" id="viewStatistics">Посмотреть статистику</button>
+        <button class="button" id="viewGameRecord">Посмотреть запись игры</button>
+        <button class="button" id="help">Помощь</button>
+    </div>
+
+    <script type="module">
+        import { getAllGames, getAllWins, getAllLosses, getStatistics } from './db.js';
+
+        document.getElementById('startGame').addEventListener('click', function() {
+            window.location.href = 'gameSetup.html';
+        });
+
+        document.getElementById('viewAllGames').addEventListener('click', function() {
+            window.location.href = 'allGames.html';
+        });
+
+        document.getElementById('viewAllWins').addEventListener('click', function() {
+            window.location.href = 'allWins.html';
+        });
+
+        document.getElementById('viewAllLosses').addEventListener('click', function() {
+            window.location.href = 'allLosses.html';
+        });
+
+        document.getElementById('viewStatistics').addEventListener('click', function() {
+            window.location.href = 'statistics.html';
+        });
+
+        document.getElementById('viewGameRecord').addEventListener('click', function() {
+            window.location.href = 'viewGameRecord.html';
+        });
+
+        document.getElementById('help').addEventListener('click', function() {
+            window.location.href = 'help.html';
+        });
+    </script>
+</body>
+</html>

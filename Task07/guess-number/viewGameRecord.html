@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Посмотреть запись игры</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Посмотреть запись игры</h1>
+        <button class="button" id="backButton">Назад</button>
+        <form id="gameRecordForm">
+            <label for="gameId">Введите номер игры:</label>
+            <input type="number" id="gameId" required>
+            <button type="submit" class="button">Посмотреть</button>
+        </form>
+        <div id="gameDetails" style="display: none;">
+            <h2>Детали игры</h2>
+            <p id="gameInfo"></p>
+            <ul id="gameActions"></ul>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getGameById } from './db.js';
+
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('gameRecordForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const gameId = document.getElementById('gameId').value;
+            const game = await getGameById(parseInt(gameId));
+
+            if (game) {
+                displayGameDetails(game);
+            } else {
+                alert('Игра с таким номером не найдена');
+            }
+        });
+
+        function displayGameDetails(game) {
+            const gameInfo = document.getElementById('gameInfo');
+            const gameActions = document.getElementById('gameActions');
+            const gameDetails = document.getElementById('gameDetails');
+
+            gameInfo.textContent = `Игрок: ${game.playerName}, Исход: ${game.result}, Дата: ${new Date(game.date).toLocaleString()}`;
+            gameActions.innerHTML = '';
+
+            if (game.actions) {
+                game.actions.forEach(action => {
+                    const li = document.createElement('li');
+                    li.textContent = `Ввод: ${action.guess}, Ответ: ${action.response}`;
+                    gameActions.appendChild(li);
+                });
+            } else {
+                const li = document.createElement('li');
+                li.textContent = 'Действия не найдены';
+                gameActions.appendChild(li);
+            }
+
+            gameDetails.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

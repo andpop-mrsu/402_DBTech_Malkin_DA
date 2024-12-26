@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки игры</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="gameSetup.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Настройки игры</h1>
+        <form id="gameSetupForm">
+            <label for="maxNumber">Максимальное число:</label>
+            <input type="number" id="maxNumber" required><br><br>
+
+            <label for="attempts">Количество попыток:</label>
+            <input type="number" id="attempts" required><br><br>
+
+            <label for="playerName">Имя игрока:</label>
+            <input type="text" id="playerName" required><br><br>
+
+            <button type="submit" class="button">Начать игру</button>
+        </form>
+    </div>
+
+    <script type="module">
+        document.getElementById('gameSetupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const maxNumber = document.getElementById('maxNumber').value;
+            const attempts = document.getElementById('attempts').value;
+            const playerName = document.getElementById('playerName').value;
+
+            localStorage.setItem('maxNumber', maxNumber);
+            localStorage.setItem('attempts', attempts);
+            localStorage.setItem('playerName', playerName);
+
+            window.location.href = 'game.html';
+        });
+    </script>
+</body>
+</html>

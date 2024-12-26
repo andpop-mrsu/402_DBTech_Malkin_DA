@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все победы</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Все победы</h1>
+        <button class="button" id="backButton">Назад</button>
+        <ul id="winsList"></ul>
+    </div>
+
+    <script type="module">
+        import { getAllWins } from './db.js';
+
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        async function displayAllWins() {
+            const wins = await getAllWins();
+            const winsList = document.getElementById('winsList');
+            winsList.innerHTML = '';
+
+            wins.forEach(win => {
+                const li = document.createElement('li');
+                li.textContent = `Игрок: ${win.playerName}, Дата: ${new Date(win.date).toLocaleString()}`;
+                winsList.appendChild(li);
+            });
+        }
+
+        displayAllWins();
+    </script>
+</body>
+</html>

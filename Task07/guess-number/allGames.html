@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все игры</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Все игры</h1>
+        <button class="button" id="backButton">Назад</button>
+        <ul id="gamesList"></ul>
+    </div>
+
+    <script type="module">
+        import { getAllGames } from './db.js';
+
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        async function displayAllGames() {
+            const games = await getAllGames();
+            const gamesList = document.getElementById('gamesList');
+            gamesList.innerHTML = '';
+
+            games.forEach(game => {
+                const li = document.createElement('li');
+                li.textContent = `Игрок: ${game.playerName}, Исход: ${game.result}, Дата: ${new Date(game.date).toLocaleString()}`;
+                gamesList.appendChild(li);
+            });
+        }
+
+        displayAllGames();
+    </script>
+</body>
+</html>

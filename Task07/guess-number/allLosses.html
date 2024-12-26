@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все поражения</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Все поражения</h1>
+        <button class="button" id="backButton">Назад</button>
+        <ul id="lossesList"></ul>
+    </div>
+
+    <script type="module">
+        import { getAllLosses } from './db.js';
+
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        async function displayAllLosses() {
+            const losses = await getAllLosses();
+            const lossesList = document.getElementById('lossesList');
+            lossesList.innerHTML = '';
+
+            losses.forEach(loss => {
+                const li = document.createElement('li');
+                li.textContent = `Игрок: ${loss.playerName}, Дата: ${new Date(loss.date).toLocaleString()}`;
+                lossesList.appendChild(li);
+            });
+        }
+
+        displayAllLosses();
+    </script>
+</body>
+</html>
