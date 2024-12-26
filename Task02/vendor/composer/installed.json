@@ -1,0 +1,122 @@
+{
+    "packages": [
+        {
+            "name": "markause/guess-number",
+            "version": "v1.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KrasulinN/guess-number.git",
+                "reference": "e3cee9e9fa77187feb6a083600a4f2af5f5e1c2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KrasulinN/guess-number/zipball/e3cee9e9fa77187feb6a083600a4f2af5f5e1c2b",
+                "reference": "e3cee9e9fa77187feb6a083600a4f2af5f5e1c2b",
+                "shasum": ""
+            },
+            "require": {
+                "wp-cli/php-cli-tools": "^0.12.0"
+            },
+            "time": "2024-09-27T15:46:20+00:00",
+            "bin": [
+                "bin/guess-number"
+            ],
+            "type": "project",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/Controller.php",
+                    "src/View.php"
+                ],
+                "psr-4": {
+                    "Markause\\GuessNumber\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KrasulinN",
+                    "email": "kras.nik.040603@gmail.com"
+                }
+            ],
+            "description": "Implementation of the game \"Guess-number\"",
+            "support": {
+                "issues": "https://github.com/KrasulinN/guess-number/issues",
+                "source": "https://github.com/KrasulinN/guess-number/tree/v1.0"
+            },
+            "install-path": "../markause/guess-number"
+        },
+        {
+            "name": "wp-cli/php-cli-tools",
+            "version": "v0.12.0",
+            "version_normalized": "0.12.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-cli/php-cli-tools.git",
+                "reference": "2d1da4751f47622b56e6616c87b2fb53decee4e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/2d1da4751f47622b56e6616c87b2fb53decee4e5",
+                "reference": "2d1da4751f47622b56e6616c87b2fb53decee4e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.6.0"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-latest",
+                "wp-cli/wp-cli-tests": "^4"
+            },
+            "time": "2024-05-22T20:20:04+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "lib/cli/cli.php"
+                ],
+                "psr-0": {
+                    "cli": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Bachhuber",
+                    "email": "daniel@handbuilt.co",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "James Logsdon",
+                    "email": "jlogsdon@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Console utilities for PHP",
+            "homepage": "http://github.com/wp-cli/php-cli-tools",
+            "keywords": [
+                "cli",
+                "console"
+            ],
+            "support": {
+                "issues": "https://github.com/wp-cli/php-cli-tools/issues",
+                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.12.0"
+            },
+            "install-path": "../wp-cli/php-cli-tools"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
