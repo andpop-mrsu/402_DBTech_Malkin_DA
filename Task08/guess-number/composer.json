@@ -1,0 +1,21 @@
+{
+    "name": "markause/guess-number-web",
+    "description": "guess number game",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Markause\\GuessNumberWeb\\": "public/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Malkin Denis"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "slim/http": "^0.4.0"
+    }
+}
