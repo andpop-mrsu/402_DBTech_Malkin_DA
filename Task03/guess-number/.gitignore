@@ -1,0 +1,31 @@
+# Игнорировать временные файлы и каталоги
+*.log
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+*.idea/
+*.vscode/
+
+# Игнорировать файлы сборки и кэш
+*.cache
+*.phpunit.result.cache
+*.phar
+
+# Игнорировать файлы IDE
+*.iml
+*.project
+*.classpath
+
+# Игнорировать файл Composer
+/vendor/
+
+# Игнорировать файлы тестирования и отчёты
+*.coverage
+*.cov
+*.phpunit.result.cache
+phpunit.xml
+
+# Игнорировать другие специфичные файлы и каталоги
+.env
+.env.*
