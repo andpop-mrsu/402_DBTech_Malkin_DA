@@ -1,0 +1,129 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e3b907723a30ba679c446aec2def63dc",
+    "packages": [
+        {
+            "name": "markause/guess-number",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JesusStar/guess-number.git",
+                "reference": "c2440ce07ae9eb11042eccf1295ce800cd18e7f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JesusStar/guess-number/zipball/c2440ce07ae9eb11042eccf1295ce800cd18e7f8",
+                "reference": "c2440ce07ae9eb11042eccf1295ce800cd18e7f8",
+                "shasum": ""
+            },
+            "require": {
+                "wp-cli/php-cli-tools": "^0.12.0"
+            },
+            "bin": [
+                "bin/guess-number"
+            ],
+            "type": "project",
+            "autoload": {
+                "files": [
+                    "src/Controller.php",
+                    "src/View.php"
+                ],
+                "psr-4": {
+                    "Markause\\GuessNumber\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JesusStar",
+                    "email": "JesusStar.Amunarh@gmail.com"
+                }
+            ],
+            "description": "Implementation of the game \"Guess-number\"",
+            "support": {
+                "issues": "https://github.com/JesusStar/guess-number/",
+                "source": "https://github.com/JesusStar/guess-number/"
+            },
+            "time": "2024-10-25T09:16:22+00:00"
+        },
+        {
+            "name": "wp-cli/php-cli-tools",
+            "version": "v0.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-cli/php-cli-tools.git",
+                "reference": "d1fe500378f53fb5ae1072c0daa77095c384a082"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-cli/php-cli-tools/zipball/d1fe500378f53fb5ae1072c0daa77095c384a082",
+                "reference": "d1fe500378f53fb5ae1072c0daa77095c384a082",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.6.0"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-latest",
+                "wp-cli/wp-cli-tests": "^4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/cli/cli.php"
+                ],
+                "psr-0": {
+                    "cli": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Bachhuber",
+                    "email": "daniel@handbuilt.co",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "James Logsdon",
+                    "email": "jlogsdon@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Console utilities for PHP",
+            "homepage": "http://github.com/wp-cli/php-cli-tools",
+            "keywords": [
+                "cli",
+                "console"
+            ],
+            "support": {
+                "issues": "https://github.com/wp-cli/php-cli-tools/issues",
+                "source": "https://github.com/wp-cli/php-cli-tools/tree/v0.12.1"
+            },
+            "time": "2024-10-01T11:13:49+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

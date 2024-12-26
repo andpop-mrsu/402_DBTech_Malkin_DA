@@ -1,0 +1,104 @@
+#!/usr/bin/env php
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use Markause\GuessNumber\Controller;
+use Markause\GuessNumber\Database;
+date_default_timezone_set('Europe/Moscow');
+
+$dbPath = __DIR__ . '/../database.sqlite';
+$db = new Database($dbPath);
+
+// Проверка на наличие команды --save
+$saveToDatabase = in_array('--save', $argv);
+
+// Если передана команда --save, то выполняем игру с сохранением
+if ($saveToDatabase) {
+    $maxNumber = (int)readline("Enter the maximum number for the guessing range: ");
+    $maxAttempts = (int)readline("Enter the maximum number of attempts: ");
+    $playerName = readline("Enter your name: ");
+    Controller::startGame($maxNumber, $maxAttempts, $saveToDatabase, $dbPath, $playerName);
+    exit;
+}
+
+// Обработка других команд
+if (isset($argv[1])) {
+    switch ($argv[1]) {
+        case 'list':
+            $games = $db->getGames();
+            if (empty($games)) {
+                echo "No games found.\n";
+            } else {
+                foreach ($games as $game) {
+                    echo "ID: {$game['id']}, Player: {$game['player_name']}, Date: {$game['date']}, Result: {$game['result']}\n";
+                }
+            }
+            break;
+        case 'wins':
+            $games = $db->getGamesByResult('win');
+            if (empty($games)) {
+                echo "No winning games found.\n";
+            } else {
+                foreach ($games as $game) {
+                    echo "ID: {$game['id']}, Player: {$game['player_name']}, Date: {$game['date']}, Result: {$game['result']}\n";
+                }
+            }
+            break;
+        case 'losses':
+            $games = $db->getGamesByResult('lose');
+            if (empty($games)) {
+                echo "No losing games found.\n";
+            } else {
+                foreach ($games as $game) {
+                    echo "ID: {$game['id']}, Player: {$game['player_name']}, Date: {$game['date']}, Result: {$game['result']}\n";
+                }
+            }
+            break;
+        case 'stats':
+            $stats = $db->getPlayerStats();
+            if (empty($stats)) {
+                echo "No player stats found.\n";
+            } else {
+                foreach ($stats as $stat) {
+                    echo "Player: {$stat['player_name']}, Wins: {$stat['wins']}, Losses: {$stat['losses']}\n";
+                }
+            }
+            break;
+        case 'replay':
+            $games = $db->getGames();
+            if (empty($games)) {
+                echo "No games found.\n";
+                break;
+            }
+
+            echo "Available games:\n";
+            foreach ($games as $game) {
+                echo "ID: {$game['id']}, Player: {$game['player_name']}, Date: {$game['date']}, Result: {$game['result']}\n";
+            }
+
+            $gameId = (int)readline("Enter game ID to replay: ");
+            $game = $db->getGame($gameId);
+            if (!$game) {
+                echo "Game not found.\n";
+                break;
+            }
+
+            echo "Replaying game ID: {$game['id']}, Player: {$game['player_name']}, Date: {$game['date']}, Result: {$game['result']}\n";
+            $attempts = $db->getAttempts($game['id']);
+            foreach ($attempts as $attempt) {
+                echo "Attempt {$attempt['attempt_number']}: Guessed {$attempt['guessed_number']}, Result: {$attempt['result']}\n";
+            }
+            break;
+        default:
+            echo "Unknown command.\n";
+            break;
+    }
+    exit;
+}
+
+// Если не передана команда, то выполняем игру без сохранения
+$maxNumber = (int)readline("Enter the maximum number for the guessing range: ");
+$maxAttempts = (int)readline("Enter the maximum number of attempts: ");
+$playerName = readline("Enter your name: ");
+
+Controller::startGame($maxNumber, $maxAttempts, false, $dbPath, $playerName);
