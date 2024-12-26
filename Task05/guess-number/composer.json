@@ -1,0 +1,36 @@
+{
+    "name": "markause/guess-number",
+    "description": "Implementation of the game \"Guess-number\"",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Markause\\GuessNumber\\": "src/"
+        },
+        "files": [
+            "src/Controller.php",
+            "src/View.php",
+			"src/Game.php",
+			"src/Database.php"
+        ]
+    },
+    "bin": [
+        "bin/guess-number"
+    ],
+    "authors": [
+        {
+            "name": "JesusStar",
+            "email": "JesusStar.Amunarh@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.0",
+		"gabordemooij/redbean": "^5.7"
+    },
+	"scripts": {
+        "post-autoload-dump": [
+            "composer update --working-dir=$(dirname $(composer config vendor-dir))/vendor/markause/guess-number"
+        ]
+    }
+}
